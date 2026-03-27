@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Belediye Strateji ve Karar Destek Merkezi</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .belediye-container { width: 800px; max-width: 95%; margin: auto; }
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        .dash-card {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            border-top: 5px solid #1976d2;
+        }
+        .dash-card h4 { margin: 0; color: #888; font-size: 12px; text-transform: uppercase; }
+        .dash-card p { margin: 10px 0 0; font-size: 24px; font-weight: bold; color: #1976d2; }
+        
+        #ihbarListesi {
+            background: white;
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            max-height: 600px;
+            overflow-y: auto;
+        }
+        .temizle-btn {
+            background: #d32f2f !important;
+            width: auto;
+            padding: 10px 25px;
+            margin: 20px 0;
+            font-size: 14px;
+        }
+        .footer-note { text-align: center; font-size: 12px; color: #999; margin-top: 30px; }
+    </style>
+</head>
+<body>
+
+<div class="belediye-container">
+    <div style="text-align:center; margin-bottom:40px;">
+        <h1 style="color:#1565c0; font-size:32px; margin-bottom:5px;">🏛️ Belediye Strateji Merkezi</h1>
+        <p style="color:#666;">Canlı Mahalle Veri Akışı ve Karar Destek Paneli</p>
+    </div>
+
+    <div class="dashboard-grid">
+        <div class="dash-card">
+            <h4>Gelen Bildirim</h4>
+            <p id="toplam">0</p>
+        </div>
+        <div class="dash-card">
+            <h4>Sistem Durumu</h4>
+            <p style="color:#2e7d32;">AKTİF</p>
+        </div>
+        <div class="dash-card">
+            <h4>Veri Güvenliği</h4>
+            <p style="color:#2e7d32;">ANONİM</p>
+        </div>
+    </div>
+
+    <h2 style="font-size:18px; color:#333; margin-bottom:15px;">📩 Son Gelen Bildirimler</h2>
+    <div id="ihbarListesi">
+        </div>
+
+    <div style="text-align:right;">
+        <button class="temizle-btn" onclick="tumVerileriSil()">🗑️ Tüm Kayıtları Sıfırla</button>
+    </div>
+
+    <center>
+        <a href="index.html" style="text-decoration:none; color:#1976d2; font-weight:bold;">← Vatandaş Giriş Portalı'na Dön</a>
+    </center>
+
+    <div class="footer-note">
+        © 2026 Akıllı Şehir Altyapı Yönetim Sistemi | Mezuniyet Projesi
+    </div>
+</div>
+
+<script>
+    function verileriGuncelle() {
+        const liste = document.getElementById("ihbarListesi");
+        const toplamSayac = document.getElementById("toplam");
+        const veriler = JSON.parse(localStorage.getItem("belediye_verileri")) || [];
+        
+        toplamSayac.innerText = veriler.length;
+
+        if (veriler.length === 0) {
+            liste.innerHTML = "<p style='text-align:center; color:#bbb; padding:50px;'>Şu anda sistemde incelenmeyi bekleyen bildirim bulunmamaktadır.</p>";
+        } else {
+            liste.innerHTML = "";
+            veriler.slice().reverse().forEach(v => {
+                const tempDiv = document.createElement("div");
+                tempDiv.innerHTML = v;
+                liste.appendChild(tempDiv);
+            });
+        }
+    }
+
+    function tumVerileriSil() {
+        if (confirm("DİKKAT: Tüm belediye veri havuzu kalıcı olarak silinecektir. Emin misiniz?")) {
+            localStorage.removeItem("belediye_verileri");
+            verileriGuncelle();
+        }
+    }
+
+    window.onload = verileriGuncelle;
+</script>
+</body>
+</html>
