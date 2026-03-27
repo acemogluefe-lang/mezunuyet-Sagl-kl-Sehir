@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>⚖️ Karbon Analizi: Orta Seviye</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .balance-container {
+            border-top: 10px solid #f57f17 !important;
+            background: #fffdf0 !important;
+            text-align: center;
+            padding: 40px;
+        }
+        .status-icon {
+            font-size: 70px;
+            margin-bottom: 20px;
+            display: block;
+        }
+        .info-card {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: left;
+            border-left: 6px solid #f57f17;
+            margin: 25px 0;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+        .goal-box {
+            background: #f57f17;
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .step-list {
+            list-style: none;
+            padding: 0;
+            text-align: left;
+        }
+        .step-list li {
+            margin-bottom: 12px;
+            padding-left: 30px;
+            position: relative;
+        }
+        .step-list li::before {
+            content: "🎯";
+            position: absolute;
+            left: 0;
+        }
+        button {
+            background-color: #f57f17 !important;
+            transition: 0.3s;
+        }
+        button:hover {
+            background-color: #e65100 !important;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+
+<div class="container balance-container">
+    <span class="status-icon">⚖️</span>
+    <h1 style="color: #e65100; margin-bottom: 10px;">Fena Değil, Ama Gelişebilirsin!</h1>
+    <p style="color: #666;">Karbon ayak iziniz şu an "Orta" seviyede dengelenmiş durumda. Küçük dokunuşlarla bir İklim Kahramanı olmaya çok yakınsınız.</p>
+
+    <div class="goal-box">
+        HEDEF: Günlük emisyonu 4 kg CO2 altına düşürmek!
+    </div>
+
+    <div class="info-card">
+        <h3 style="margin-top: 0; color: #f57f17;">🚀 Senin İçin Gelişim Planı:</h3>
+        <ul class="step-list">
+            <li><strong>Bekleme Moduna Son:</strong> TV ve bilgisayarı geceleri fişten çekerek hayalet tüketimi engelleyin.</li>
+            <li><strong>Isı Kontrolü:</strong> Klimayı 1-2 derece daha az çalıştırmak faturanızda ve karbon izinizde büyük fark yaratır.</li>
+            <li><strong>Aydınlatma:</strong> Evdeki ampullerin en az yarısını LED modellerle değiştirmeyi deneyin.</li>
+        </ul>
+    </div>
+
+    <p style="font-style: italic; color: #888; font-size: 13px; margin-bottom: 25px;">
+        "Unutma; büyük değişimler, küçük adımlarla başlar."
+    </p>
+
+    <button onclick="window.location.href='index.html'">← Ana Sayfaya Dön ve Tekrar Dene</button>
+</div>
+
+</body>
+</html>
