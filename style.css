@@ -1,0 +1,84 @@
+:root {
+    --primary: #2e7d32;
+    --bg: #f1f8e9;
+    --card-bg: #ffffff;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background: var(--card-bg);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    width: 450px;
+    border-top: 8px solid var(--primary);
+}
+
+h1 { color: var(--primary); text-align: center; margin-bottom: 5px; }
+
+.subtitle { text-align: center; color: #666; font-size: 13px; margin-bottom: 25px; }
+
+.input-group { margin-bottom: 15px; }
+
+label { display: block; font-weight: bold; margin-bottom: 5px; color: #333; }
+
+input, select {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    box-sizing: border-box;
+    font-size: 15px;
+}
+
+button {
+    width: 100%;
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: 10px;
+}
+
+button:hover { background-color: #1b5e20; transform: translateY(-2px); }
+
+#sonucPaneli {
+    margin-top: 25px;
+    display: none;
+}
+
+.rapor-kutusu {
+    padding: 15px;
+    border-radius: 12px;
+    margin-bottom: 15px;
+}
+
+.belediye-raporu {
+    background-color: #e3f2fd;
+    border-left: 5px solid #1976d2;
+    padding: 15px;
+    font-size: 14px;
+}
+
+.badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 20px;
+    color: white;
+    font-size: 12px;
+    margin-bottom: 10px;
+}
