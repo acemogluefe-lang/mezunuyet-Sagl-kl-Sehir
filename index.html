@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akıllı Şehir - Karbon Portalı ve Karar Destek Sistemi</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Projeyi Daha Havalı Gösteren Ekstra CSS Tasarımları */
+        .header-section {
+            background: linear-gradient(135deg, #2e7d32, #1b5e20);
+            color: white;
+            padding: 35px;
+            border-radius: 25px;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+        }
+        .intro-text {
+            background: #ffffff;
+            border-left: 8px solid #2e7d32;
+            padding: 20px;
+            margin-bottom: 30px;
+            font-size: 14px;
+            line-height: 1.7;
+            color: #333;
+            border-radius: 0 15px 15px 0;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.05);
+        }
+        .input-card {
+            background: #f9f9f9;
+            padding: 25px;
+            border-radius: 20px;
+            border: 1px solid #eee;
+        }
+        .input-label {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+        .belediye-admin-link {
+            display: block;
+            text-align: center;
+            margin-top: 45px;
+            padding: 18px;
+            background: #f1f8e9;
+            color: #2e7d32;
+            text-decoration: none;
+            border: 2px dashed #2e7d32;
+            border-radius: 15px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        .belediye-admin-link:hover {
+            background: #2e7d32;
+            color: white;
+            transform: translateY(-3px);
+        }
+        button {
+            width: 100%;
+            padding: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(46, 125, 50, 0.3);
+        }
+    </style>
+</head>
+<body>
+
+<div class="container" style="width: 650px; padding: 40px;">
+    
+    <div class="header-section">
+        <h1 style="margin:0; font-size: 32px;">🏙️ Akıllı Şehir Paneli</h1>
+        <p style="margin:10px 0 0; opacity: 0.9; font-weight: 300;">Vatandaş Odaklı Enerji ve Karbon Takip Sistemi</p>
+    </div>
+
+    <div class="intro-text">
+        <strong>🌍 NEDEN VERİ GİRİSİ YAPMALIYIM?</strong><br>
+        Bu portal, mahallenizin enerji profilini oluşturur. Toplanan anonim veriler, belediyenin 
+        <strong>Güneş Paneli Desteği</strong>, <strong>Yalıtım Teşvikleri</strong> ve <strong>Ağaçlandırma Projeleri</strong> 
+        için temel oluşturur. Geleceğimiz için bir adım atın!
+    </div>
+    
+    <div class="input-card">
+        <div class="input-group">
+            <label class="input-label">📍 İkamet Ettiğiniz Mahalle:</label>
+            <select id="mahalle" style="padding: 12px; border-radius: 10px;">
+                <option value="Atatürk">Atatürk Mahallesi (Hedef: %10 Tasarruf)</option>
+                <option value="Cumhuriyet">Cumhuriyet Mahallesi (Hedef: Yeşil Bölge)</option>
+                <option value="Yeni">Yeni Mahalle (Hedef: Karbon Nötr)</option>
+                <option value="Barış">Barış Mahallesi (Hedef: Sürdürülebilir Yaşam)</option>
+            </select>
+        </div>
+
+        <div class="input-group">
+            <label class="input-label">💡 Evdeki Toplam Ampul Sayısı:</label>
+            <input type="number" id="ampul" placeholder="Örn: 10" min="0">
+        </div>
+
+        <div class="input-group">
+            <label class="input-label">❄️ Günlük Klima/Isıtıcı Kullanımı (Saat):</label>
+            <input type="number" id="klima" placeholder="Örn: 3" min="0" max="24">
+        </div>
+
+        <div class="input-group">
+            <label class="input-label">🖥️ Diğer Elektronik Cihazlar (Saat):</label>
+            <input type="number" id="elektrik" placeholder="TV, Bilgisayar, Oyun Konsolu vb." min="0" max="24">
+        </div>
+
+        <button onclick="karbonAnaliziVeYonlendirme()">🚀 VERİLERİ ANALİZ ET VE SİSTEME GÖNDER</button>
+    </div>
+
+    <a href="belediye.html" class="belediye-admin-link">🏛️ BELEDİYE STRATEJİ VE KARAR DESTEK MERKEZİ →</a>
+
+</div>
+
+<script>
+function karbonAnaliziVeYonlendirme() {
+    // Giriş verilerini al
+    const mahalle = document.getElementById("mahalle").value;
+    const ampul = Number(document.getElementById("ampul").value) || 0;
+    const klima = Number(document.getElementById("klima").value) || 0;
+    const saat = Number(document.getElementById("elektrik").value) || 0;
+    
+    // Bilimsel Karbon Katsayıları ile Hesaplama
+    // Ampul: 0.12kg | Klima: 1.6kg | Diğer: 0.45kg
+    const karbon = (ampul * 0.12) + (klima * 1.6) + (saat * 0.45);
+    const tarih = new Date().toLocaleString('tr-TR');
+
+    // Belediye İçin Bildirim Hazırlama
+    let belediyeNotu = "";
+    let renk = "";
+
+    if (karbon > 10) {
+        belediyeNotu = "🚨 KRİTİK: Enerji emisyon patlaması! Bölgeye acil müdahale ve yalıtım planı şart.";
+        renk = "#c62828";
+    } else if (karbon > 4) {
+        belediyeNotu = "⚠️ UYARI: Enerji tüketimi sınırda. Bilinçlendirme kampanyası başlatılmalı.";
+        renk = "#f57f17";
+    } else {
+        belediyeNotu = "✅ GÜVENLİ: Örnek düşük emisyon. Bu haneler ödüllendirme kapsamına alınabilir.";
+        renk = "#2e7d32";
+    }
+
+    // Mesajı Kaydetme Formatı
+    const yeniKayit = `
+        <div style="border-left: 10px solid ${renk}; padding: 15px; margin-bottom: 20px; background: white; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+            <small style="color:#999;">📅 ${tarih}</small><br>
+            <strong style="font-size: 18px;">📍 ${mahalle} Mahallesi Analizi</strong><br>
+            <span>Günlük Karbon İzi: <strong>${karbon.toFixed(2)} kg CO2</strong></span><br>
+            <p style="margin: 10px 0 0; color: ${renk}; font-weight: bold;">${belediyeNotu}</p>
+        </div>
+    `;
+
+    // LocalStorage ile Veri Havuzuna Ekleme
+    let havuz = JSON.parse(localStorage.getItem("belediye_verileri")) || [];
+    havuz.push(yeniKayit);
+    localStorage.setItem("belediye_verileri", JSON.stringify(havuz));
+
+    // AKILLI YÖNLENDİRME SİSTEMİ
+    if (karbon <= 4) {
+        // İYİ SEVİYE
+        alert("Harika! Karbon ayak iziniz çok düşük. Sizi başarı sayfanıza yönlendiriyoruz 🎉");
+        window.location.href = "tebrikler.html"; 
+    } 
+    else if (karbon > 4 && karbon <= 10) {
+        // ORTA SEVİYE
+        alert("Dikkat! Karbon iziniz orta seviyede. Geliştirmek için önerilerimizi inceleyin ⚖️");
+        window.location.href = "dikkat.html"; 
+    } 
+    else {
+        // KRİTİK SEVİYE
+        alert("DİKKAT: Emisyon değerleriniz çok yüksek! Acil Eylem Planına yönlendiriliyorsunuz 🚨");
+        window.location.href = "uyari.html"; 
+    }
+}
+</script>
+
+</body>
+</html>
