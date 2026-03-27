@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>🌟 Tebrikler! İklim Kahramanı</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <style>
+        .success-container {
+            border-top: 10px solid #2e7d32 !important;
+            background: #f1f8e9 !important;
+            text-align: center;
+        }
+        .medal { font-size: 80px; margin: 20px 0; display: block; animation: bounce 2s infinite; }
+        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
+        .score-badge { background: #2e7d32; color: white; padding: 10px 20px; border-radius: 30px; font-weight: bold; }
+    </style>
+</head>
+<body onload="fireConfetti()">
+<div class="container success-container">
+    <span class="medal">🏆</span>
+    <h1 style="color: #2e7d32;">Muazzam Bir Sonuç!</h1>
+    <div class="score-badge">DÜŞÜK KARBON SALIMI</div>
+    <p style="margin-top: 20px;">Evinizdeki enerji kullanımı dünya standartlarının bile altında. Siz tam bir <strong>İklim Kahramanısınız!</strong></p>
+    
+    <div style="background: white; padding: 15px; border-radius: 10px; margin: 20px 0; border: 1px dashed #2e7d32;">
+        <p>🎖️ <strong>Belediye Ödülü:</strong> Bu verilerle mahallenizin "Yeşil Bayrak" almasına yardımcı oldunuz.</p>
+    </div>
+
+    <button onclick="window.location.href='index.html'">Giriş Sayfasına Dön</button>
+</div>
+
+<script>
+    function fireConfetti() {
+        confetti({ pixelSettle: 0, particleCount: 150, spread: 70, origin: { y: 0.6 } });
+    }
+</script>
+</body>
+</html>
